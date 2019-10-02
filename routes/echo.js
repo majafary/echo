@@ -12,9 +12,10 @@ router.get('/health-check', function(req, res, next){
 });
 
 
-/* Handle health check Get Request for api */
-router.get('/echo', function(req, res, next){
+/* Handle health check Post Request for api */
+router.post('/echo', function(req, res, next){
   console.log(req.body);
   res.send(req.body);
 });
+
 module.exports = router;

@@ -1,0 +1,14 @@
+﻿apiVersion: v1
+kind: Service
+metadata:
+  name: echo
+  namespace: mjafary
+  labels:
+    name: echo
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    name: echo
+---

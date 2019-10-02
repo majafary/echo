@@ -1,0 +1,36 @@
+﻿apiVersion: v1
+kind: Service
+metadata:
+  name: echo
+  namespace: mjafary
+  labels:
+    name: echo
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+    nodePort: 30130
+  selector:
+    name: echo
+  type: NodePort
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: echo
+  namespace: mjafary
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: echo
+    spec:
+      containers:
+      - resources:
+        name: echo
+        image: jafary/echo:latest
+        ports:
+        - name: echo-port
+          containerPort: 8080
+---
